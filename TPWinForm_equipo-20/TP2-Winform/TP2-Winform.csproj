@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,11 +45,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmDetalles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetalles.Designer.cs">
+      <DependentUpon>FrmDetalles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGestion.Designer.cs">
+      <DependentUpon>FrmGestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInfo.Designer.cs">
+      <DependentUpon>FrmInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInicio.Designer.cs">
+      <DependentUpon>FrmInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmDetalles.resx">
+      <DependentUpon>FrmDetalles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGestion.resx">
+      <DependentUpon>FrmGestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInfo.resx">
+      <DependentUpon>FrmInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInicio.resx">
+      <DependentUpon>FrmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
