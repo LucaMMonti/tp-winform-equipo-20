@@ -7,9 +7,10 @@ using System.Windows.Forms;
 
 namespace TP2_Winform
 {
-    internal class Program
+    static class Program
     {
-        static void Main(string[] args)
+        [STAThread]
+        static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

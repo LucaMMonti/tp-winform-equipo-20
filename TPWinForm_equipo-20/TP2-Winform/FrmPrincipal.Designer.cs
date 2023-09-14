@@ -192,6 +192,7 @@
             this.Controls.Add(this.pbxArticulos);
             this.Name = "FrmPrincipal";
             this.Text = "Catalogo";
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulos)).EndInit();
             this.ResumeLayout(false);
