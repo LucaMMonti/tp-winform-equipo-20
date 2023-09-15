@@ -161,7 +161,7 @@
             this.btnVolver.TabIndex = 22;
             this.btnVolver.Text = "Volver a catálogo";
             this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            this.btnVolver.Click += new System.EventHandler(this.BtnVolver_Click);
             // 
             // pbxArticulo
             // 

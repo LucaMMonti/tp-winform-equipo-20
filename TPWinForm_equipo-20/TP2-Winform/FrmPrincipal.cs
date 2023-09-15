@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
-using Negocio;
+using System.IO;
 
 namespace TP2_Winform
 {
@@ -18,6 +18,24 @@ namespace TP2_Winform
         public FrmPrincipal()
         {
             InitializeComponent();
+            Cargar();
+        }
+        public void Cargar() {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                listaArt = negocio.listar();
+                dgvArticulos.DataSource = listaArt;
+                dgvArticulos.Columns[0].Visible = false;
+                dgvArticulos.Columns[7].Visible = false;
+                pbxArticulos.Load(listaArt[0].Imagen);
+            }
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void btnInicio_Click(object sender, EventArgs e)
@@ -25,31 +43,70 @@ namespace TP2_Winform
             Close();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void BtnAgregar_Click(object sender, EventArgs e)
         {
             FrmGestion nuevaVentana = new FrmGestion();
+            Cargar();
+            nuevaVentana.ShowDialog();       
+        }
+
+        private void BtnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            FrmGestion nuevaVentana = new FrmGestion(seleccionado);
+            Cargar();
             nuevaVentana.ShowDialog();
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void BtnDetalle_Click(object sender, EventArgs e)
         {
-            FrmGestion nuevaVentana = new FrmGestion();
-            nuevaVentana.ShowDialog();
-        }
-
-        private void btnDetalle_Click(object sender, EventArgs e)
-        {
-            FrmDetalles nuevaVentana = new FrmDetalles();
-            nuevaVentana.ShowDialog();
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            FrmDetalles nuevoVentana = new FrmDetalles(seleccionado);
+            Cargar();
+            nuevoVentana.ShowDialog();
         }
 
         private List<Articulo> listaArt;
-        private void FrmPrincipal_Load(object sender, EventArgs e)
+        
+        private void DgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
+            try
+            {
+                if (dgvArticulos.SelectedRows.Count != 0)
+                {
+                    Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    pbxArticulos.Load(articulo.Imagen);
+                }
+            }
+            catch (System.Net.WebException ex)
+            {
 
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            listaArt = negocio.listar();
-            dgvArticulos.DataSource = listaArt;
+                pbxArticulos.Load("https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640");
+            }
+            catch (FileNotFoundException ex)
+            {
+                pbxArticulos.Load("https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640");
+            }
         }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            try
+            {
+                if (MessageBox.Show("¿Está seguro que quiere eliminar este artículo?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    negocio.eliminar(seleccionado.ID);
+                    Cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("No se pudo eliminar" + ex.ToString());
+            }
+        }
+
     }
 }

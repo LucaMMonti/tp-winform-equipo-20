@@ -94,7 +94,7 @@
             this.pbxArticulos.Name = "pbxArticulos";
             this.pbxArticulos.Size = new System.Drawing.Size(295, 341);
             this.pbxArticulos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxArticulos.TabIndex = 11;
+            this.pbxArticulos.TabIndex = 1;
             this.pbxArticulos.TabStop = false;
             // 
             // btnDetalle
@@ -111,7 +111,7 @@
             this.btnDetalle.TabIndex = 19;
             this.btnDetalle.Text = "Ver detalle";
             this.btnDetalle.UseVisualStyleBackColor = true;
-            this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
+            this.btnDetalle.Click += new System.EventHandler(this.BtnDetalle_Click);
             // 
             // btnEliminar
             // 
@@ -127,6 +127,7 @@
             this.btnEliminar.TabIndex = 18;
             this.btnEliminar.Text = "Eliminar artículo";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // btnModificar
             // 
@@ -142,7 +143,7 @@
             this.btnModificar.TabIndex = 17;
             this.btnModificar.Text = "Modificar artículo";
             this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
             // 
             // btnAgregar
             // 
@@ -158,7 +159,7 @@
             this.btnAgregar.TabIndex = 16;
             this.btnAgregar.Text = "Agregar artículo";
             this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.btnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // btnInicio
             // 
@@ -192,7 +193,7 @@
             this.Controls.Add(this.pbxArticulos);
             this.Name = "FrmPrincipal";
             this.Text = "Catalogo";
-            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.DgvArticulos_SelectionChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulos)).EndInit();
             this.ResumeLayout(false);

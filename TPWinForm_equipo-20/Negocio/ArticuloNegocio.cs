@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select A.Id, Codigo, Nombre, A.Descripcion, Precio, C.Descripcion CATEGORIA , M.Descripcion Marca, A.IdMarca, A.IdCategoria  From ARTICULOS A, CATEGORIAS C, MARCAS M Where C.Id = A.IdCategoria AND M.id = A.idMarca");
+                datos.setearConsulta("Select A.Id, Codigo, Nombre, A.Descripcion, Precio, C.Descripcion CATEGORIA , M.Descripcion Marca, A.IdMarca, A.IdCategoria, I.ImagenUrl From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria and M.id = A.idMarca and I.IdArticulo=A.Id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -45,9 +45,8 @@ namespace Negocio
                         aux.Marca.ID = (int)datos.Lector["IdMarca"];
                     if (!(datos.Lector["IdCategoria"] is DBNull))
                         aux.Categoria.ID = (int)datos.Lector["IdCategoria"];
-                    //if (!(datos.Lector["Imagen"] is DBNull))
-                    //    aux.Imagen = new Imagen();
-                    //aux.Imagen.ImagenUrl = (string)datos.Lector["Imagen"];
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        aux.Imagen = (string)datos.Lector["ImagenUrl"];
 
                     lista.Add(aux);
                 }
@@ -63,6 +62,72 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public void modificar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca=@idMarca, IdCategoria=@idCategoria, ImagenUrl=@imagenUrl, Precio=@precio where id = @id");
+                datos.agregarParametro("@codigo", articulo.Codigo);
+                datos.agregarParametro("@nombre", articulo.Nombre);
+                datos.agregarParametro("@descripcion", articulo.Descripcion);
+                datos.agregarParametro("@idMarca", articulo.Marca.ID);
+                datos.agregarParametro("@idCategoria", articulo.Categoria.ID);
+                datos.agregarParametro("@imagenUrl", articulo.Imagen);
+                datos.agregarParametro("@precio", articulo.Precio);
+                datos.agregarParametro("@id", articulo.ID);
 
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void agregar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Insert into ARTICULOS values (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @imagenUrl, @precio)");
+                datos.agregarParametro("@codigo", articulo.Codigo);
+                datos.agregarParametro("@nombre", articulo.Nombre);
+                datos.agregarParametro("@descripcion", articulo.Descripcion);
+                datos.agregarParametro("@idMarca", articulo.Marca.ID);
+                datos.agregarParametro("@idCategoria", articulo.Categoria.ID);
+                datos.agregarParametro("@imagenUrl", articulo.Imagen);
+                datos.agregarParametro("@precio", articulo.Precio);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void eliminar(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Delete From ARTICULOS Where id = " + id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
