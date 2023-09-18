@@ -23,6 +23,7 @@ namespace TP2_Winform
         {
             InitializeComponent();
             this.articulo = articulo;
+            Text = "Modificar Articulo";
         }
 
         private void FrmGestion_Load(object sender, EventArgs e)
@@ -75,7 +76,7 @@ namespace TP2_Winform
                 articulo.Marca = (Marca)cbxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
                 articulo.Imagen = txtImagen.Text;
-                articulo.Precio = Decimal.Parse(txtPrecio.Text);
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
 
                 if (articulo.ID != 0)
                 {
@@ -103,5 +104,7 @@ namespace TP2_Winform
                 e.Handled = true;
             }
         }
+
+        
     }
 }

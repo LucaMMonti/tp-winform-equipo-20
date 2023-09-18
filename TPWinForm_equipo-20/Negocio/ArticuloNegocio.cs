@@ -94,14 +94,10 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Insert into ARTICULOS values (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @imagenUrl, @precio)");
-                datos.agregarParametro("@codigo", articulo.Codigo);
-                datos.agregarParametro("@nombre", articulo.Nombre);
-                datos.agregarParametro("@descripcion", articulo.Descripcion);
+                datos.setearConsulta("insert into ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria) values( '" + articulo.Codigo + "', '" + articulo.Nombre + "', '" + articulo.Descripcion + "'," + articulo.Precio + ", @idMarca, @idCategoria, @imagenUrl)");
                 datos.agregarParametro("@idMarca", articulo.Marca.ID);
                 datos.agregarParametro("@idCategoria", articulo.Categoria.ID);
                 datos.agregarParametro("@imagenUrl", articulo.Imagen);
-                datos.agregarParametro("@precio", articulo.Precio);
 
                 datos.ejecutarAccion();
             }
@@ -121,6 +117,7 @@ namespace Negocio
             try
             {
                 datos.setearConsulta("Delete From ARTICULOS Where id = " + id);
+  
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

@@ -34,8 +34,15 @@ namespace Negocio
         public void ejecutarAccion()
         {
             comando.Connection = conexion;
-            conexion.Open();
-            comando.ExecuteNonQuery();
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
         }
         public void ejecutarLectura()

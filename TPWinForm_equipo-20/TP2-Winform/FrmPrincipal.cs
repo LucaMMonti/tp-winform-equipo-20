@@ -14,16 +14,38 @@ using System.IO;
 namespace TP2_Winform
 {
     public partial class FrmPrincipal : Form
-    {
+    {   
+        private List<Articulo> listaArt;
         public FrmPrincipal()
         {
             InitializeComponent();
             Cargar();
         }
         public void Cargar() {
-            ArticuloNegocio negocio = new ArticuloNegocio();
+            
             try
             {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                listaArt = negocio.listar();
+                dgvArticulos.DataSource = listaArt;
+                dgvArticulos.Columns[0].Visible = false;
+                dgvArticulos.Columns[7].Visible = false;
+                pbxArticulos.Load(listaArt[0].Imagen);
+            }
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public void Cargar(object sender, EventArgs e)
+        {
+
+            try
+            {
+                ArticuloNegocio negocio = new ArticuloNegocio();
                 listaArt = negocio.listar();
                 dgvArticulos.DataSource = listaArt;
                 dgvArticulos.Columns[0].Visible = false;
@@ -46,7 +68,6 @@ namespace TP2_Winform
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             FrmGestion nuevaVentana = new FrmGestion();
-            Cargar();
             nuevaVentana.ShowDialog();       
         }
 
@@ -54,19 +75,18 @@ namespace TP2_Winform
         {
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             FrmGestion nuevaVentana = new FrmGestion(seleccionado);
-            Cargar();
+ 
             nuevaVentana.ShowDialog();
+            Cargar(sender, e);
         }
 
         private void BtnDetalle_Click(object sender, EventArgs e)
         {
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             FrmDetalles nuevoVentana = new FrmDetalles(seleccionado);
-            Cargar();
             nuevoVentana.ShowDialog();
         }
 
-        private List<Articulo> listaArt;
         
         private void DgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
@@ -98,7 +118,7 @@ namespace TP2_Winform
                 if (MessageBox.Show("¿Está seguro que quiere eliminar este artículo?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     negocio.eliminar(seleccionado.ID);
-                    Cargar();
+                    
                 }
             }
             catch (Exception ex)
@@ -107,6 +127,7 @@ namespace TP2_Winform
                 MessageBox.Show("No se pudo eliminar" + ex.ToString());
             }
         }
+
 
     }
 }

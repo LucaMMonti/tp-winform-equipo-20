@@ -56,6 +56,7 @@
             this.dgvArticulos.ShowEditingIcon = false;
             this.dgvArticulos.Size = new System.Drawing.Size(579, 341);
             this.dgvArticulos.TabIndex = 15;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.DgvArticulos_SelectionChanged);
             // 
             // btnFiltrar
             // 
@@ -193,7 +194,6 @@
             this.Controls.Add(this.pbxArticulos);
             this.Name = "FrmPrincipal";
             this.Text = "Catalogo";
-            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.DgvArticulos_SelectionChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulos)).EndInit();
             this.ResumeLayout(false);
