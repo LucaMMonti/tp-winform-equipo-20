@@ -86,9 +86,9 @@ namespace TP2_Winform
         }
 
         private int indiceImagenActual = 0;
-
         private void DgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
+            indiceImagenActual = 0;
             try
             {
                 if (dgvArticulos.SelectedRows.Count != 0)
@@ -130,21 +130,47 @@ namespace TP2_Winform
             }
         }
 
-        private void pbxArticulos_Click(object sender, EventArgs e)
-        {
-            Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-
-            if (articulo.Imagenes.Count > 0)
-            {
-                // Pasar a la siguiente imagen cuando se haga clic en el PictureBox
-                indiceImagenActual = (indiceImagenActual + 1) % articulo.Imagenes.Count;
-                pbxArticulos.Load(articulo.Imagenes[indiceImagenActual].ImagenURL);
-            }
-        }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             Cargar();
+        }
+
+        private void btnImgR_Click(object sender, EventArgs e)
+        {
+            Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+            if (articulo.Imagenes.Count > 1)
+            {
+                try
+                {
+                    indiceImagenActual = (indiceImagenActual + 1) % articulo.Imagenes.Count;
+                    pbxArticulos.Load(articulo.Imagenes[indiceImagenActual].ImagenURL);
+                    
+                }
+                catch (Exception ex)
+                {
+                    indiceImagenActual = (indiceImagenActual - 1) % articulo.Imagenes.Count;
+                    pbxArticulos.Load(articulo.Imagenes[indiceImagenActual].ImagenURL);
+                }
+                
+            }
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            string filtro = txtFiltro.Text;
+
+            if (filtro == "" || filtro.Length <= 2)
+            {
+                dgvArticulos.DataSource = null;
+                dgvArticulos.DataSource = listaArt;
+            }
+            else
+            {
+                List<Articulo> listaFiltrada = listaArt.FindAll(x => x.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Nombre.ToUpper().Contains(filtro.ToUpper()));
+                dgvArticulos.DataSource = null;
+                dgvArticulos.DataSource = listaFiltrada;
+            }
         }
     }
 }

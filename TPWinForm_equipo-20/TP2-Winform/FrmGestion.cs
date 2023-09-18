@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,6 +31,7 @@ namespace TP2_Winform
         {
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             MarcaNegocio marcaNegocio = new MarcaNegocio();
+          
             try
             {
                 cbxMarca.DataSource = marcaNegocio.Listar();
@@ -47,6 +49,7 @@ namespace TP2_Winform
                     cbxMarca.SelectedValue = articulo.Marca.ID;
                     cbxCategoria.SelectedValue = articulo.Categoria.ID;
                     txtPrecio.Text = articulo.Precio.ToString();
+                    txtImg.Text = articulo.Imagenes[0].ImagenURL;
                 }
             }
             catch (Exception ex)
@@ -64,6 +67,8 @@ namespace TP2_Winform
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
+            ImagenNegocio negocioImg = new ImagenNegocio();
+            Imagen imagen = new Imagen();
             try
             {
                 if (articulo == null)
@@ -75,15 +80,19 @@ namespace TP2_Winform
                 articulo.Marca = (Marca)cbxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
+                imagen.ImagenURL = txtImg.Text;
+                imagen.IdArticulo = articulo.ID;
 
                 if (articulo.ID != 0)
                 {
                     negocio.modificar(articulo);
+                    negocioImg.Modificar(imagen);
                     MessageBox.Show("Artículo modificado exitosamente");
                 }
                 else
                 {
                     negocio.agregar(articulo);
+                    negocioImg.Modificar(imagen);
                     MessageBox.Show("Artículo agregado exitosamente");
                 }
                 Close();

@@ -42,6 +42,8 @@
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblCodigoArt = new System.Windows.Forms.Label();
+            this.lblImg = new System.Windows.Forms.Label();
+            this.txtImg = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtCodigo
@@ -53,7 +55,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(171, 254);
+            this.btnCancelar.Location = new System.Drawing.Point(171, 278);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(108, 31);
             this.btnCancelar.TabIndex = 31;
@@ -63,7 +65,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(51, 254);
+            this.btnAceptar.Location = new System.Drawing.Point(53, 278);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(108, 31);
             this.btnAceptar.TabIndex = 30;
@@ -163,11 +165,29 @@
             this.lblCodigoArt.TabIndex = 16;
             this.lblCodigoArt.Text = "Código Artículo:";
             // 
+            // lblImg
+            // 
+            this.lblImg.AutoSize = true;
+            this.lblImg.Location = new System.Drawing.Point(50, 238);
+            this.lblImg.Name = "lblImg";
+            this.lblImg.Size = new System.Drawing.Size(58, 13);
+            this.lblImg.TabIndex = 32;
+            this.lblImg.Text = "Url Imagen";
+            // 
+            // txtImg
+            // 
+            this.txtImg.Location = new System.Drawing.Point(136, 235);
+            this.txtImg.Name = "txtImg";
+            this.txtImg.Size = new System.Drawing.Size(143, 20);
+            this.txtImg.TabIndex = 33;
+            // 
             // FrmGestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(347, 361);
+            this.Controls.Add(this.txtImg);
+            this.Controls.Add(this.lblImg);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -206,5 +226,7 @@
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblCodigoArt;
+        private System.Windows.Forms.Label lblImg;
+        private System.Windows.Forms.TextBox txtImg;
     }
 }
