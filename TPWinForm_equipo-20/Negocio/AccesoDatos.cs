@@ -64,6 +64,24 @@ namespace Negocio
                 lector.Close();
             conexion.Close();
         }
+
+        internal int ejecutarAccionReturn()
+        {
+            try
+            {
+                comando.Connection = conexion;
+                conexion.Open();
+                return (int)comando.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cerrarConexion();
+            }
+        }
     }
 }
 

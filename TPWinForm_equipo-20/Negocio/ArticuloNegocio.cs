@@ -14,10 +14,10 @@ namespace Negocio
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
-
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
             try
             {
-                datos.setearConsulta("Select A.Id, Codigo, Nombre, A.Descripcion, Precio, C.Descripcion CATEGORIA , M.Descripcion Marca, A.IdMarca, A.IdCategoria, I.ImagenUrl From ARTICULOS A, CATEGORIAS C, MARCAS M, IMAGENES I Where C.Id = A.IdCategoria and M.id = A.idMarca and I.IdArticulo=A.Id");
+                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, Precio, C.Descripcion CATEGORIA, M.Descripcion Marca, A.IdMarca, A.IdCategoria FROM ARTICULOS A, CATEGORIAS C, MARCAS M WHERE C.Id = A.IdCategoria AND M.id = A.idMarca");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -25,35 +25,23 @@ namespace Negocio
                     Articulo aux = new Articulo();
 
                     aux.ID = (int)datos.Lector["Id"];
+                    aux.Codigo = datos.Lector["Codigo"]?.ToString();
+                    aux.Nombre = datos.Lector["Nombre"]?.ToString();
+                    aux.Descripcion = datos.Lector["Descripcion"]?.ToString();
+                    aux.Precio = (decimal)(datos.Lector["Precio"] ?? 0);
 
-                    if (!(datos.Lector["Codigo"] is DBNull))
-                        aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Categoria = new Categoria { Descripcion = datos.Lector["CATEGORIA"]?.ToString(), ID = (int)(datos.Lector["IdCategoria"] ?? 0) };
+                    aux.Marca = new Marca { Descripcion = datos.Lector["Marca"]?.ToString(), ID = (int)(datos.Lector["IdMarca"] ?? 0) };
 
-                    if (!(datos.Lector["Nombre"] is DBNull))
-                        aux.Nombre = (string)datos.Lector["Nombre"];
-                    if (!(datos.Lector["Codigo"] is DBNull))
-                        aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    if (!(datos.Lector["Precio"] is DBNull))
-                        aux.Precio = (decimal)datos.Lector["Precio"];
-                    if (!(datos.Lector["CATEGORIA"] is DBNull))
-                        aux.Categoria = new Categoria();
-                    aux.Categoria.Descripcion = (string)datos.Lector["CATEGORIA"];
-                    if (!(datos.Lector["Marca"] is DBNull))
-                        aux.Marca = new Marca();
-                    aux.Marca.Descripcion = (string)datos.Lector["Marca"];
-                    if (!(datos.Lector["IdMarca"] is DBNull))
-                        aux.Marca.ID = (int)datos.Lector["IdMarca"];
-                    if (!(datos.Lector["IdCategoria"] is DBNull))
-                        aux.Categoria.ID = (int)datos.Lector["IdCategoria"];
-                    if (!(datos.Lector["ImagenUrl"] is DBNull))
-                        aux.Imagen = (string)datos.Lector["ImagenUrl"];
+                    
+                    aux.Imagenes = imagenNegocio.Listar(aux.ID);
 
                     lista.Add(aux);
                 }
 
                 return lista;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -65,19 +53,22 @@ namespace Negocio
         public void modificar(Articulo articulo)
         {
             AccesoDatos datos = new AccesoDatos();
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
             try
             {
-                datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca=@idMarca, IdCategoria=@idCategoria, ImagenUrl=@imagenUrl, Precio=@precio where id = @id");
+                datos.setearConsulta("UPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio WHERE id = @id");
+
                 datos.agregarParametro("@codigo", articulo.Codigo);
                 datos.agregarParametro("@nombre", articulo.Nombre);
                 datos.agregarParametro("@descripcion", articulo.Descripcion);
                 datos.agregarParametro("@idMarca", articulo.Marca.ID);
                 datos.agregarParametro("@idCategoria", articulo.Categoria.ID);
-                datos.agregarParametro("@imagenUrl", articulo.Imagen);
                 datos.agregarParametro("@precio", articulo.Precio);
                 datos.agregarParametro("@id", articulo.ID);
 
                 datos.ejecutarAccion();
+
+
             }
             catch (Exception ex)
             {
@@ -92,18 +83,41 @@ namespace Negocio
         public void agregar(Articulo articulo)
         {
             AccesoDatos datos = new AccesoDatos();
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
+
             try
             {
-                datos.setearConsulta("insert into ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria) values( '" + articulo.Codigo + "', '" + articulo.Nombre + "', '" + articulo.Descripcion + "'," + articulo.Precio + ", @idMarca, @idCategoria, @imagenUrl)");
+                datos.setearConsulta("insert into ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria) output inserted.Id values(@codigo, @nombre, @descripcion, @precio, @idMarca, @idCategoria)");
+
+                datos.agregarParametro("@codigo", articulo.Codigo);
+                datos.agregarParametro("@nombre", articulo.Nombre);
+                datos.agregarParametro("@descripcion", articulo.Descripcion);
+                datos.agregarParametro("@precio", articulo.Precio);
                 datos.agregarParametro("@idMarca", articulo.Marca.ID);
                 datos.agregarParametro("@idCategoria", articulo.Categoria.ID);
-                datos.agregarParametro("@imagenUrl", articulo.Imagen);
 
-                datos.ejecutarAccion();
+                var articuloId = (int)datos.ejecutarAccionReturn();
+
+
+
+                if (articulo.Imagenes == null || !articulo.Imagenes.Any())
+                {
+                    articulo.Imagenes = new List<Imagen>();
+                    Imagen imagenDefault = new Imagen
+                    {
+                        ImagenURL = "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640",
+                        IdArticulo = articuloId  
+                    };
+                    articulo.Imagenes.Add(imagenDefault);
+                }
+                /*foreach (var imagen in articulo.Imagenes) 
+                {
+                    imagen.IdArticulo = articuloId; 
+                    imagenNegocio.Agregar(imagen);
+                }*/
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally

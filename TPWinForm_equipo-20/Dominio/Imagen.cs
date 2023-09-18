@@ -9,7 +9,7 @@ namespace Dominio
     public class Imagen
     {
         public int ID { get; set; }
-        public Articulo articulo { get; set; }
+        public int IdArticulo { get; set; }
         public string ImagenURL { get; set; }
 
     }

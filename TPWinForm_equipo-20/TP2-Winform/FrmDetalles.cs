@@ -43,7 +43,16 @@ namespace TP2_Winform
                 txtMarca.Text = articulo.Marca.Descripcion;
                 txtCategoria.Text = articulo.Categoria.Descripcion;
                 txtPrecio.Text = articulo.Precio.ToString();
-                pbxArticulo.Load(articulo.Imagen);
+
+
+                if (articulo.Imagenes != null && articulo.Imagenes.Count > 0)
+                {
+                    pbxArticulo.Load(articulo.Imagenes[0].ImagenURL);
+                }
+                else
+                {
+                    pbxArticulo.Load("https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640");
+                }
 
 
             }

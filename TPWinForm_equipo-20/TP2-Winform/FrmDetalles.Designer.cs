@@ -155,7 +155,7 @@
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnVolver.Location = new System.Drawing.Point(15, 226);
+            this.btnVolver.Location = new System.Drawing.Point(64, 453);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(166, 36);
             this.btnVolver.TabIndex = 22;
@@ -165,9 +165,9 @@
             // 
             // pbxArticulo
             // 
-            this.pbxArticulo.Location = new System.Drawing.Point(364, 2);
+            this.pbxArticulo.Location = new System.Drawing.Point(12, 202);
             this.pbxArticulo.Name = "pbxArticulo";
-            this.pbxArticulo.Size = new System.Drawing.Size(532, 491);
+            this.pbxArticulo.Size = new System.Drawing.Size(269, 228);
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxArticulo.TabIndex = 21;
             this.pbxArticulo.TabStop = false;
@@ -176,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(940, 534);
+            this.ClientSize = new System.Drawing.Size(297, 534);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtCategoria);
             this.Controls.Add(this.txtMarca);
@@ -193,6 +193,7 @@
             this.Controls.Add(this.pbxArticulo);
             this.Name = "FrmDetalles";
             this.Text = "FrmDetalles";
+            this.Load += new System.EventHandler(this.Frm_Detalles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

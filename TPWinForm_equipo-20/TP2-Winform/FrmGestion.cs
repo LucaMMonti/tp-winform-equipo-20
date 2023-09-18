@@ -46,7 +46,6 @@ namespace TP2_Winform
                     txtDescripcion.Text = articulo.Descripcion;
                     cbxMarca.SelectedValue = articulo.Marca.ID;
                     cbxCategoria.SelectedValue = articulo.Categoria.ID;
-                    txtImagen.Text = articulo.Imagen;
                     txtPrecio.Text = articulo.Precio.ToString();
                 }
             }
@@ -75,7 +74,6 @@ namespace TP2_Winform
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.Marca = (Marca)cbxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
-                articulo.Imagen = txtImagen.Text;
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
 
                 if (articulo.ID != 0)

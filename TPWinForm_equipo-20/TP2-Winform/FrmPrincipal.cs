@@ -28,9 +28,8 @@ namespace TP2_Winform
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 listaArt = negocio.listar();
                 dgvArticulos.DataSource = listaArt;
-                dgvArticulos.Columns[0].Visible = false;
-                dgvArticulos.Columns[7].Visible = false;
-                pbxArticulos.Load(listaArt[0].Imagen);
+                dgvArticulos.Columns["ID"].Visible = false;
+                pbxArticulos.Load(listaArt[0].Imagenes[0].ImagenURL);
             }
 
             catch (Exception ex)
@@ -48,9 +47,8 @@ namespace TP2_Winform
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 listaArt = negocio.listar();
                 dgvArticulos.DataSource = listaArt;
-                dgvArticulos.Columns[0].Visible = false;
-                dgvArticulos.Columns[7].Visible = false;
-                pbxArticulos.Load(listaArt[0].Imagen);
+                dgvArticulos.Columns["ID"].Visible = false;
+                pbxArticulos.Load(listaArt[0].Imagenes[0].ImagenURL);
             }
 
             catch (Exception ex)
@@ -87,7 +85,8 @@ namespace TP2_Winform
             nuevoVentana.ShowDialog();
         }
 
-        
+        private int indiceImagenActual = 0;
+
         private void DgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
             try
@@ -95,7 +94,10 @@ namespace TP2_Winform
                 if (dgvArticulos.SelectedRows.Count != 0)
                 {
                     Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                    pbxArticulos.Load(articulo.Imagen);
+                    if (articulo.Imagenes.Count > 0)
+                    {
+                        pbxArticulos.Load(articulo.Imagenes[indiceImagenActual].ImagenURL);
+                    }
                 }
             }
             catch (System.Net.WebException ex)
@@ -128,6 +130,21 @@ namespace TP2_Winform
             }
         }
 
+        private void pbxArticulos_Click(object sender, EventArgs e)
+        {
+            Articulo articulo = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
 
+            if (articulo.Imagenes.Count > 0)
+            {
+                // Pasar a la siguiente imagen cuando se haga clic en el PictureBox
+                indiceImagenActual = (indiceImagenActual + 1) % articulo.Imagenes.Count;
+                pbxArticulos.Load(articulo.Imagenes[indiceImagenActual].ImagenURL);
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            Cargar();
+        }
     }
 }
