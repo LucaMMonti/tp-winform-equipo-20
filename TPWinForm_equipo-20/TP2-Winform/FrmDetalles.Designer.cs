@@ -192,6 +192,7 @@
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.pbxArticulo);
             this.Name = "FrmDetalles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmDetalles";
             this.Load += new System.EventHandler(this.Frm_Detalles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();

@@ -50,6 +50,7 @@
             this.dgvArticulos.AllowUserToDeleteRows = false;
             this.dgvArticulos.AllowUserToResizeColumns = false;
             this.dgvArticulos.AllowUserToResizeRows = false;
+            this.dgvArticulos.BackgroundColor = System.Drawing.SystemColors.ControlDark;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Location = new System.Drawing.Point(12, 45);
             this.dgvArticulos.Name = "dgvArticulos";
@@ -78,6 +79,7 @@
             // 
             // pbxArticulos
             // 
+            this.pbxArticulos.BackColor = System.Drawing.Color.DarkGray;
             this.pbxArticulos.Location = new System.Drawing.Point(597, 45);
             this.pbxArticulos.Name = "pbxArticulos";
             this.pbxArticulos.Size = new System.Drawing.Size(295, 341);
@@ -210,7 +212,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 496);
+            this.BackgroundImage = global::TP2_Winform.Properties.Resources.Captura_de_pantalla_2023_09_18_163203;
+            this.ClientSize = new System.Drawing.Size(963, 496);
             this.Controls.Add(this.btnImgR);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnInicio);
@@ -224,6 +227,7 @@
             this.Controls.Add(this.lblFiltro);
             this.Controls.Add(this.pbxArticulos);
             this.Name = "FrmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Catalogo";
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulos)).EndInit();

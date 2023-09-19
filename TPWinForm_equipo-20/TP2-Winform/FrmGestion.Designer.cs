@@ -88,6 +88,7 @@
             this.cbxMarca.Name = "cbxMarca";
             this.cbxMarca.Size = new System.Drawing.Size(143, 21);
             this.cbxMarca.TabIndex = 23;
+            this.cbxMarca.SelectedIndexChanged += new System.EventHandler(this.cbxMarca_SelectedIndexChanged);
             // 
             // txtPrecio
             // 
@@ -203,6 +204,7 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCodigoArt);
             this.Name = "FrmGestion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de artículos";
             this.Load += new System.EventHandler(this.FrmGestion_Load);
             this.ResumeLayout(false);

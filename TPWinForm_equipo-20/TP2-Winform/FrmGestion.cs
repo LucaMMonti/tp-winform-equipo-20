@@ -112,6 +112,9 @@ namespace TP2_Winform
             }
         }
 
-        
+        private void cbxMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

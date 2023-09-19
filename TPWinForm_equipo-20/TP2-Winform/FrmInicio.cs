@@ -12,6 +12,9 @@ namespace TP2_Winform
 {
     public partial class FrmInicio : Form
     {
+
+        public static bool inicioAcceso = false;
+
         public FrmInicio()
         {
             InitializeComponent();
@@ -30,8 +33,39 @@ namespace TP2_Winform
 
         private void btnCatalogo_Click(object sender, EventArgs e)
         {
-            FrmPrincipal nuevaVentana = new FrmPrincipal();
-            nuevaVentana.ShowDialog();  
+            if (inicioAcceso == true)
+            {
+                FrmPrincipal nuevaVentana = new FrmPrincipal();
+                nuevaVentana.ShowDialog();
+            }
+
+            else
+            {
+
+                MessageBox.Show(" Accedo Denegado Debe iniciar sesion para poder acceder");
+            }
+        }
+
+        private void FrmInicio_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.ShowDialog();
+
         }
     }
 }
