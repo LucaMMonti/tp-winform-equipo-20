@@ -60,6 +60,7 @@ namespace TP2_Winform
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
+            FrmInicio.inicioAcceso = false;
             Close();
         }
 

@@ -164,11 +164,11 @@
             this.btnInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInicio.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnInicio.Location = new System.Drawing.Point(769, 464);
+            this.btnInicio.Location = new System.Drawing.Point(853, 464);
             this.btnInicio.Name = "btnInicio";
-            this.btnInicio.Size = new System.Drawing.Size(124, 20);
+            this.btnInicio.Size = new System.Drawing.Size(98, 20);
             this.btnInicio.TabIndex = 20;
-            this.btnInicio.Text = "Volver a inicio";
+            this.btnInicio.Text = "Cerrar sesion";
             this.btnInicio.UseVisualStyleBackColor = true;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
