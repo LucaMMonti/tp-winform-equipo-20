@@ -34,22 +34,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnInfo
             // 
             this.btnInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnInfo.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.btnInfo.BackColor = System.Drawing.Color.PowderBlue;
             this.btnInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInfo.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInfo.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInfo.ForeColor = System.Drawing.Color.White;
-            this.btnInfo.Location = new System.Drawing.Point(12, 168);
+            this.btnInfo.ForeColor = System.Drawing.Color.Black;
+            this.btnInfo.Location = new System.Drawing.Point(56, 87);
             this.btnInfo.Margin = new System.Windows.Forms.Padding(0);
             this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(148, 33);
+            this.btnInfo.Size = new System.Drawing.Size(148, 37);
             this.btnInfo.TabIndex = 1;
             this.btnInfo.Text = "Acerca de esta aplicación";
             this.btnInfo.UseVisualStyleBackColor = false;
@@ -57,10 +58,10 @@
             // 
             // button2
             // 
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button2.Location = new System.Drawing.Point(837, 606);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(54, 21);
+            this.button2.Size = new System.Drawing.Size(69, 26);
             this.button2.TabIndex = 2;
             this.button2.Text = "Cerrar";
             this.button2.UseVisualStyleBackColor = true;
@@ -96,32 +97,46 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.MediumVioletRed;
+            this.button1.BackColor = System.Drawing.Color.DarkRed;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 116);
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(56, 190);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 38);
-            this.button1.TabIndex = 3;
+            this.button1.Size = new System.Drawing.Size(148, 37);
+            this.button1.TabIndex = 1;
             this.button1.Text = "Administrar catálogo";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.btnCatalogo_Click);
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.Green;
+            this.button3.BackColor = System.Drawing.Color.Linen;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(12, 69);
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button3.Location = new System.Drawing.Point(56, 138);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(148, 33);
-            this.button3.TabIndex = 4;
+            this.button3.Size = new System.Drawing.Size(148, 37);
+            this.button3.TabIndex = 1;
             this.button3.Text = "Iniciar Sesion";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 51);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(350, 20);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "(Debe inicar sesion para Administrar el catalogo)";
             // 
             // FrmInicio
             // 
@@ -130,6 +145,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.BackgroundImage = global::TP2_Winform.Properties.Resources.descarga;
             this.ClientSize = new System.Drawing.Size(984, 661);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -155,5 +171,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label3;
     }
 }

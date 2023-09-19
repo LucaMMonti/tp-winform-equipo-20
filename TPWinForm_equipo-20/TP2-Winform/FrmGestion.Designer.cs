@@ -115,6 +115,7 @@
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
+            this.lblPrecio.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblPrecio.Location = new System.Drawing.Point(50, 207);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(40, 13);
@@ -124,7 +125,8 @@
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(50, 180);
+            this.lblCategoria.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblCategoria.Location = new System.Drawing.Point(50, 177);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(54, 13);
             this.lblCategoria.TabIndex = 24;
@@ -133,6 +135,7 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
+            this.lblMarca.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.lblMarca.Location = new System.Drawing.Point(50, 153);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(40, 13);
@@ -142,6 +145,7 @@
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
+            this.lblDescripcion.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDescripcion.Location = new System.Drawing.Point(50, 96);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(66, 13);
@@ -151,6 +155,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
+            this.lblNombre.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblNombre.Location = new System.Drawing.Point(50, 70);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(47, 13);
@@ -160,6 +165,7 @@
             // lblCodigoArt
             // 
             this.lblCodigoArt.AutoSize = true;
+            this.lblCodigoArt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblCodigoArt.Location = new System.Drawing.Point(50, 43);
             this.lblCodigoArt.Name = "lblCodigoArt";
             this.lblCodigoArt.Size = new System.Drawing.Size(83, 13);
@@ -169,6 +175,7 @@
             // lblImg
             // 
             this.lblImg.AutoSize = true;
+            this.lblImg.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblImg.Location = new System.Drawing.Point(50, 238);
             this.lblImg.Name = "lblImg";
             this.lblImg.Size = new System.Drawing.Size(58, 13);
@@ -186,6 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(347, 361);
             this.Controls.Add(this.txtImg);
             this.Controls.Add(this.lblImg);

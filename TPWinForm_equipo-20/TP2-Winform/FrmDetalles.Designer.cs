@@ -96,6 +96,7 @@
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
+            this.lblPrecio.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblPrecio.Location = new System.Drawing.Point(12, 167);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(40, 13);
@@ -105,6 +106,7 @@
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
+            this.lblCategoria.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblCategoria.Location = new System.Drawing.Point(12, 138);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(57, 13);
@@ -114,7 +116,8 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(12, 108);
+            this.lblMarca.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblMarca.Location = new System.Drawing.Point(12, 107);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(40, 13);
             this.lblMarca.TabIndex = 26;
@@ -123,7 +126,8 @@
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(12, 81);
+            this.lblDescripcion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblDescripcion.Location = new System.Drawing.Point(12, 80);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(66, 13);
             this.lblDescripcion.TabIndex = 25;
@@ -132,6 +136,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
+            this.lblNombre.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblNombre.Location = new System.Drawing.Point(12, 54);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(47, 13);
@@ -141,6 +146,7 @@
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
+            this.lblCodigo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblCodigo.Location = new System.Drawing.Point(12, 26);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(83, 13);
@@ -149,18 +155,19 @@
             // 
             // btnVolver
             // 
+            this.btnVolver.BackColor = System.Drawing.Color.LightSlateGray;
             this.btnVolver.FlatAppearance.BorderSize = 2;
             this.btnVolver.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnVolver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnVolver.Location = new System.Drawing.Point(64, 453);
+            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnVolver.Location = new System.Drawing.Point(87, 454);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(166, 36);
+            this.btnVolver.Size = new System.Drawing.Size(116, 27);
             this.btnVolver.TabIndex = 22;
             this.btnVolver.Text = "Volver a catálogo";
-            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.BtnVolver_Click);
             // 
             // pbxArticulo
@@ -176,6 +183,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(297, 534);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtCategoria);
