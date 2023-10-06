@@ -21,5 +21,10 @@ namespace TP2_Winform
         {
             Close();
         }
+
+        private void FrmInfo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
