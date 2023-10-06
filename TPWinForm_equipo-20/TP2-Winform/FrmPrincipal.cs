@@ -104,11 +104,11 @@ namespace TP2_Winform
             catch (System.Net.WebException ex)
             {
 
-                pbxArticulos.Load("https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640");
+                pbxArticulos.Load("https://www.pillar.com.mx/img/categorias/no-disponible.jpg");
             }
             catch (FileNotFoundException ex)
             {
-                pbxArticulos.Load("https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640");
+                pbxArticulos.Load("https://www.pillar.com.mx/img/categorias/no-disponible.jpg");
             }
         }
 
